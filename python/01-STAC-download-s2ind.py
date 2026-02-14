@@ -87,7 +87,7 @@ def searchSTAC(years, assetList, sentinel_folder):
                 while attempts < max_attempts:
                     time.sleep(sleeptime)
                     try:
-                        response = urllib2.urlopen(url, timeout = 5)
+                        response = urllib.request.urlopen(url, timeout = 5)
                         content = response.read()
                         f = open(filename, 'w')
                         f.write(content)
