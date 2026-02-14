@@ -53,12 +53,6 @@ def searchSTAC(years, assetList, sentinel_folder):
     collectionName = 'sentinel_2_monthly_index_mosaics_at_fmi'
     print(f'We take {collectionName}')
 
-    max_attempts = 2
-    attempts = 0
-    sleeptime = 10 #in seconds, no reason to continuously try if network is down
-
-
-
     collection = catalog.get_collection(collectionName)
     #print(f"ID: {collection.id}")
     print(f"\nTitle: {collection.title or 'N/A'}")
@@ -83,16 +77,11 @@ def searchSTAC(years, assetList, sentinel_folder):
 
                 # Define local path for downloaded file,
                 filename = os.path.join(sentinel_folder, os.path.basename(url))
-
+                print(url)
+                print(filename)
                 # Download the file:
-                while attempts < max_attempts:
-                    time.sleep(sleeptime)
-                    try:
-                        urllib.request.urlretrieve(url, filename)
-                        break
-                    except urllib.error.URLError as e:
-                        attempts += 1                        
-                        print(type(e))
+                urllib.request.urlretrieve(url, filename)
+
 
         
 # HERE STARTS MAIN:
