@@ -113,4 +113,6 @@ if __name__ == '__main__':
                                      epilog=textwrap.dedent(__doc__))
     parser.add_argument('-o', '--outputshppath',
                         help='Directory to save parcel geometries.',
-                        type=str)   
+                        type=str)       
+    args = parser.parse_args()
+    main(args)
