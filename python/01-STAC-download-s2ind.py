@@ -79,7 +79,7 @@ def searchSTAC(years, assetList, sentinel_folder):
                 # Define local path for downloaded file,
                 filename = os.path.join(sentinel_folder, os.path.basename(url))
                 # If the file does not exist, we download it:
-                if not filename.is_file():
+                if not os.path.isfile(filename):
                     print(url)
                     print(filename)
                     # Download the file:
