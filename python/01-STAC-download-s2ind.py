@@ -19,7 +19,7 @@ from dask.distributed import Client, Lock
 import os
 import re
 import urllib.request
-import urllib.error
+#import urllib.error
 import time
 
 
@@ -32,6 +32,7 @@ import textwrap
 # EDIT THIS:
 years = range(2016, 2025)
 years = range(2024, 2025)
+years = range(2018, 2023)
 
 # EDIT asset list (ndvi, ndti, ndmi, ndbi, ndsi, meta):
 assetList = ['ndvi', 'meta']
@@ -51,7 +52,7 @@ def searchSTAC(years, assetList, sentinel_folder):
 
 
     collectionName = 'sentinel_2_monthly_index_mosaics_at_fmi'
-    print(f'We take {collectionName}')
+    print(f'\nWe take {collectionName}')
 
     collection = catalog.get_collection(collectionName)
     #print(f"ID: {collection.id}")
@@ -82,7 +83,8 @@ def searchSTAC(years, assetList, sentinel_folder):
                 # Download the file:
                 urllib.request.urlretrieve(url, filename)
 
-
+        time.sleep(10)
+              
         
 # HERE STARTS MAIN:
 
