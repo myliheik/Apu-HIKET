@@ -88,7 +88,7 @@ def searchSTAC(years, assetList, sentinel_folder):
                         break
                     except urllib2.URLError as e:
                         attempts += 1
-                        print type(e)    
+                        print(type(e))
 
         
 # HERE STARTS MAIN:
