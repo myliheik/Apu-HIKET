@@ -19,6 +19,7 @@ from dask.distributed import Client, Lock
 import os
 import re
 import urllib.request
+import urllib.error
 import time
 
 
@@ -87,14 +88,10 @@ def searchSTAC(years, assetList, sentinel_folder):
                 while attempts < max_attempts:
                     time.sleep(sleeptime)
                     try:
-                        response = urllib.request.urlopen(url, timeout = 5)
-                        content = response.read()
-                        f = open(filename, 'w')
-                        f.write(content)
-                        f.close()
+                        urllib.request.urlretrieve(url, filename)
                         break
-                    except urllib.request.URLError as e:
-                        attempts += 1
+                    except urllib.error.URLError as e:
+                        attempts += 1                        
                         print(type(e))
 
         
