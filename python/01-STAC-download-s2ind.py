@@ -78,12 +78,17 @@ def searchSTAC(years, assetList, sentinel_folder):
 
                 # Define local path for downloaded file,
                 filename = os.path.join(sentinel_folder, os.path.basename(url))
-                print(url)
-                print(filename)
-                # Download the file:
-                urllib.request.urlretrieve(url, filename)
-
-        time.sleep(10)
+                # If the file does not exist, we download it:
+                if not filename.is_file():
+                    print(url)
+                    print(filename)
+                    # Download the file:
+                    urllib.request.urlretrieve(url, filename)
+                else:
+                    continue
+        
+        # take a break:
+        time.sleep(6)
               
         
 # HERE STARTS MAIN:
