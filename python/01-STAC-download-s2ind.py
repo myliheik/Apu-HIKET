@@ -93,7 +93,7 @@ def searchSTAC(years, assetList, sentinel_folder):
                         f.write(content)
                         f.close()
                         break
-                    except urllib2.URLError as e:
+                    except urllib.request.URLError as e:
                         attempts += 1
                         print(type(e))
 
@@ -117,7 +117,7 @@ def main(args):
         print(f'\nDone.')
 
     except Exception as e:
-        print('\n\nUnable to read input or write out. Check prerequisites and see exception output below.')
+        print('\n\nUnable to download data. Check prerequisites and see exception output below.')
         parser.print_help()
         raise e
 
