@@ -36,9 +36,8 @@ import pickle
 def readLPIS(fpkasvu):
     kasvulohko = gpd.read_file(fpkasvu)
     #print(kasvulohko.columns)
-    kasvulohko.rename(columns={"PLVUOSI_PERUSLOHKOTUNNUS": "PLOHKO", "KVI_KASVIKOODI": "KASVIKOODI", "KVI_KASVIK": "KASVIKOODI", "MAATILA_TUNNUS": "MAATILA_TU", "KLILM_TUNN": "KLILM_TUNNUS", "PLVUOSI_PE": "PLOHKO", "PINTAALA": "P_ALA_HA"
-                              }, inplace=True)
-
+    kasvulohko.rename(columns={"PLVUOSI_PERUSLOHKOTUNNUS": "PLOHKO", "PERUSLOHKOTUNNUS": "PLOHKO", "PLVUOSI_PE": "PLOHKO", "KVI_KASVIKOODI": "KASVIKOODI", "KVI_KASVIK": "KASVIKOODI", "MAATILA_TUNNUS": "MAATILA_TU", "KLILM_TUNN": "KLILM_TUNNUS", "TUNNUS": "KLILM_TUNNUS"}, inplace=True)
+    
     year = str(kasvulohko['VUOSI'][0])
     projection = kasvulohko.crs
     

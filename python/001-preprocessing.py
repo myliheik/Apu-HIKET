@@ -37,20 +37,20 @@ warnings.filterwarnings("ignore")
 
 # EDIT here the crops that will be included:
 
-includedCrops0 = [9620, 9700, 9710, 5181, 5182, 5183, 5184, 5185, 5186, 5187, 5199, 9402, 9430, 9600, 9610, 9810, 9820,
-5451, 5304, 5310, 5535, 5536, 5537, 5213, 5313, 5210, 5211, 5314, 5221, 5400, 5410, 5420, 5436, 5305, 5300, 5301, 5302, 5303, 5307, 4910, 4911, 4912, 5442, 5443, 8032, 8034, 8035, 8036, 5500, 5510, 5511, 5512, 5520, 5530,
-6060, 4900, 4901, 4902, 4903, 5315, 6300, 6301, 6302, 5198, 6400, 8045, 5220, 8002, 8003, 8031, 9200, 9300, 9301, 9310, 9311, 9312, 5531, 5532, 5533, 5534, 7110, 7210, 8001, 9410, 6600, 6700, 6710, 6720, 9804, 9100, 9101, 9102, 9110, 9111]
+#includedCrops0 = [9620, 9700, 9710, 5181, 5182, 5183, 5184, 5185, 5186, 5187, 5199, 9402, 9430, 9600, 9610, 9810, 9820,
+#5451, 5304, 5310, 5535, 5536, 5537, 5213, 5313, 5210, 5211, 5314, 5221, 5400, 5410, 5420, 5436, 5305, 5300, 5301, 5302, 5303, #5307, 4910, 4911, 4912, 5442, 5443, 8032, 8034, 8035, 8036, 5500, 5510, 5511, 5512, 5520, 5530,
+#6060, 4900, 4901, 4902, 4903, 5315, 6300, 6301, 6302, 5198, 6400, 8045, 5220, 8002, 8003, 8031, 9200, 9300, 9301, 9310, 9311, #9312, 5531, 5532, 5533, 5534, 7110, 7210, 8001, 9410, 6600, 6700, 6710, 6720, 9804, 9100, 9101, 9102, 9110, 9111]
 
-includedCrops = list(map(str, includedCrops0))
+#includedCrops = list(map(str, includedCrops0))
 
 
 def readLPIS(fpkasvu, FILTERED_OUT, includeCrops):
     kasvulohko = gpd.read_file(fpkasvu)
     print(kasvulohko.columns)
-    kasvulohko.rename(columns={"PLVUOSI_PERUSLOHKOTUNNUS": "PLOHKO", "KVI_KASVIKOODI": "KASVIKOODI", "KVI_KASVIK": "KASVIKOODI", "MAATILA_TUNNUS": "MAATILA_TU", "KLILM_TUNN": "KLILM_TUNNUS", "PLVUOSI_PE": "PLOHKO", "PINTAALA": "P_ALA_HA"
-                              }, inplace=True)
+    kasvulohko.rename(columns={"PLVUOSI_PERUSLOHKOTUNNUS": "PLOHKO", "PERUSLOHKOTUNNUS": "PLOHKO", "PLVUOSI_PE": "PLOHKO", "KVI_KASVIKOODI": "KASVIKOODI", "KVI_KASVIK": "KASVIKOODI", "MAATILA_TUNNUS": "MAATILA_TU", "KLILM_TUNN": "KLILM_TUNNUS", "TUNNUS": "KLILM_TUNNUS"}, inplace=True)
 
     year = str(kasvulohko['VUOSI'][0])
+    
     projection = kasvulohko.crs
     
     print(f'The total number of parcels: {len(kasvulohko)}')
@@ -61,6 +61,7 @@ def readLPIS(fpkasvu, FILTERED_OUT, includeCrops):
     if len(kasvulohko) - len(kasvulohko00) > 0:
         print(f'There were {len(kasvulohko) - len(kasvulohko00)} nas in parcel geometries! Excluded now.')
         
+    # We calculate area to be sure of the units -> ha:    
     kasvulohko0['P_ALA_HA'] = round(kasvulohko0.area/10000, 2)
  
     print(f'The mean area of parcels: {kasvulohko0["P_ALA_HA"].mean()}')
@@ -86,9 +87,10 @@ def readLPIS(fpkasvu, FILTERED_OUT, includeCrops):
     filtered3 = filtered3.rename(columns={'MAATILA_TU': 'farm_ID', 'KASVIKOODI': 'plant_ID'}).copy()
     print(f'Broken typologies were checked. {len(filtered3)} parcels remains.')
     
-    filtered3['perimeter'] = filtered3.length.round(0)
+    #filtered3['perimeter'] = filtered3.length.round(0)
     
-    filtered3['parcelID'] = filtered3['KLILM_TUNNUS'].apply(lambda x: "{}{}{}".format(year,'_', x)) + '_' + filtered3['PLOHKO'].astype(str) + '_' + filtered3['plant_ID'].astype(str)
+    # Create unique parcel ID:    
+    #filtered3['parcelID'] = filtered3['KLILM_TUNNUS'].apply(lambda x: "{}{}{}".format(year,'_', x)) + '_' + filtered3['PLOHKO'].astype(str) + '_' + filtered3['plant_ID'].astype(str) + '_' + gdf_clipped['P_ALA_HA'].astype(str)
     
     print('\n--------')
     #print(f"The share of crop types in the data, by area and by number: \n{pd.concat([tmpala, tmpnr, alatotos, tmpnrkaikki, alatiacs], axis = 1)}")
@@ -100,8 +102,9 @@ def clipParcels(kasvulohkot, year, AIOshp):
     aoi = gpd.read_file(AIOshp)
     gdf_clipped = kasvulohkot.cx[aoi.bounds.minx[0]:aoi.bounds.maxx[0], aoi.bounds.miny[0]:aoi.bounds.maxy[0]]
     # Create unique parcel ID:
-    gdf_clipped2 = gdf_clipped.assign(parcelID = gdf_clipped['KLILM_TUNNUS'].apply(lambda x: "{}{}{}".format(*year,'_', x)) + '_' + gdf_clipped['PLOHKO'].astype(str) + '_' + gdf_clipped['plant_ID'].astype(str) + '_' + gdf_clipped['P_ALA_HA'].astype(str))
-    print('ParcelID is in format: YEAR_kasvulohkoID_peruslohkoID_CROPTYPE_area. Area is in hectares.')
+    gdf_clipped2 = gdf_clipped.assign(parcelID = gdf_clipped['KLILM_TUNNUS'].apply(lambda x: "{}{}{}".format(year,'_', x)) + '_' + gdf_clipped['PLOHKO'].astype(str) + '_' + gdf_clipped['plant_ID'].astype(str))
+    print(gdf_clipped2.head(1))
+    print('ParcelID is in format: YEAR_kasvulohkoID_peruslohkoID_CROPTYPE')
     
     return gdf_clipped2        
 
