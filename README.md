@@ -12,6 +12,12 @@ Each image contains the highest NDVI values per pixel. The highest NDVI value is
 
 ![til](./img/animated.gif)
 
+### AOI
+
+The locations where field measurements were taken define the extent of Area-Of-Interest (AOI):
+
+![til](./img/AOI.png)
+
 ## Results
 
 Check images in [timeseries-mittalohkot.ipynb](https://github.com/myliheik/Apu-HIKET/blob/main/notebooks/timeseries-mittalohkot.ipynb "Link to the notebook").
@@ -60,3 +66,5 @@ Public link: [https://a3s.fi/Apu-HIKET/maxNDVI-fieldData-2023.gpkg](https://a3s.
 Public link: [https://a3s.fi/Apu-HIKET/maxNDVI-fieldData-2024.gpkg](https://a3s.fi/Apu-HIKET/maxNDVI-fieldData-2024.gpkg)
 
 Public link: [https://a3s.fi/Apu-HIKET/maxNDVI-fieldData-2025.gpkg](https://a3s.fi/Apu-HIKET/maxNDVI-fieldData-2025.gpkg)
+
+
