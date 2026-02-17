@@ -1,11 +1,15 @@
 # Apu-HIKET
 
-maxNDVI calculated from Sentinel-2 index mosaics: https://ckan.ymparisto.fi/dataset/sentinel-2-image-index-mosaics-s2ind-sentinel-2-kuvamosaiikit-s2ind
-The highest NDVI value taken from the period 15.5.-31.7.
+maxNDVI calculated from Sentinel-2 monthly index mosaics: https://ckan.ymparisto.fi/dataset/sentinel-2-image-index-mosaics-s2ind-sentinel-2-kuvamosaiikit-s2ind
+The highest NDVI value taken from the period 15.5.-31.7. The period consists of 4 mosaics: 15.5.-15.6., 1.6.-30.6., 15.6.-15.7., 1.7.-30.7.
 
 The s2ind images downloaded from Paituli via STAC. See https://github.com/myliheik/Apu-HIKET/blob/main/python/01-STAC-download-s2ind.py
 
 https://radiantearth.github.io/stac-browser/#/external/paituli.csc.fi/geoserver/ogc/stac/v1/collections/sentinel_2_monthly_index_mosaics_at_fmi
+
+Each image contains the highest NDVI values per pixel. The highest NDVI value is accompanied with the date it was recorded. Demostration of time series in 2023 from Ruukki:
+
+![til](./image/animated.gif)
 
 ## Results
 
