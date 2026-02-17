@@ -1,7 +1,15 @@
 # Apu-HIKET
 
+maxNDVI calculated from Sentinel-2 index mosaics: https://ckan.ymparisto.fi/dataset/sentinel-2-image-index-mosaics-s2ind-sentinel-2-kuvamosaiikit-s2ind
+The highest NDVI value taken from the period 15.5.-31.7.
+
+The s2ind images downloaded from Paituli via STAC. See 
 
 ## Results
+
+Check images in https://github.com/myliheik/Apu-HIKET/blob/main/notebooks/timeseries-mittalohkot.ipynb
+Note! In 2018-2021 the metadata has corrupted, so we don't know the date when the highest NDVI was recorded. But the date should be between the time range of 15.5.-31.7.
+
 
 ### Tabular data
 
