@@ -16,7 +16,7 @@ Each image contains the highest NDVI values per pixel. The highest NDVI value is
 
 The locations where field measurements were taken define the extent of Area-Of-Interest (AOI):
 
-![til](./img/AOI.png)
+![AOI](./img/AOI.png)
 
 ## Results
 
