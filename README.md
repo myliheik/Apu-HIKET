@@ -5,9 +5,12 @@ The highest NDVI value taken from the period 15.5.-31.7.
 
 The s2ind images downloaded from Paituli via STAC. See 
 
+https://radiantearth.github.io/stac-browser/#/external/paituli.csc.fi/geoserver/ogc/stac/v1/collections/sentinel_2_monthly_index_mosaics_at_fmi
+
 ## Results
 
 Check images in https://github.com/myliheik/Apu-HIKET/blob/main/notebooks/timeseries-mittalohkot.ipynb
+
 Note! In 2018-2021 the metadata has corrupted, so we don't know the date when the highest NDVI was recorded. But the date should be between the time range of 15.5.-31.7.
 
 
