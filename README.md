@@ -9,7 +9,7 @@ https://radiantearth.github.io/stac-browser/#/external/paituli.csc.fi/geoserver/
 
 Each image contains the highest NDVI values per pixel. The highest NDVI value is accompanied with the date it was recorded. Demostration of time series in 2023 from Ruukki:
 
-![til](./image/animated.gif)
+![til](./img/animated.gif)
 
 ## Results
 
