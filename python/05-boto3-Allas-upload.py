@@ -28,7 +28,7 @@ import boto3
 import glob
 
 s3_credentials = '~/.boto3_credentials4'
-s3_profile = 's3allas-project_2008047'
+#s3_profile = 's3allas-project_2008047'
 s3_profile = 'default'
 
 os.environ['AWS_SHARED_CREDENTIALS_FILE'] = s3_credentials
@@ -64,7 +64,7 @@ def main(args):
 
         print(f'\nRead all results in csv files and upload to Allas...')
 
-        fps = glob.iglob(args.inputpath + 'maxNDVI*')
+        fps = glob.iglob(args.inputpath + '/maxNDVI*')
         for filename in fps:
             print(filename)
 

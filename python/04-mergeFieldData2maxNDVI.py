@@ -34,7 +34,7 @@ for year in range(2018, 2026):
     merged = gdf.merge(df, how = 'left', on = 'parcelID')
     merged2 = merged.merge(df2, how = 'left', on = 'parcelID')
     
-    print(f'Saving file to: {os.path.join(fp, os.path.basename(fieldDataPath[0]).replace('field', 'maxNDVI-field'))}')
-    merged2.to_file(os.path.join(fp, os.path.basename(fieldDataPath[0]).replace('field', 'maxNDVI-field')))
+    print(f'Saving file to: {os.path.join(fp, os.path.basename(fieldDataPath[0]).replace('field', 'maxNDVI-field').replace('shp', 'gpkg'))}')
+    merged2.to_file(os.path.join(fp, os.path.basename(fieldDataPath[0]).replace('field', 'maxNDVI-field').replace('shp', 'gpkg')))
 
 print('Done')
