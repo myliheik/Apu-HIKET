@@ -7,7 +7,7 @@ The s2ind images downloaded from Paituli via STAC. See https://github.com/mylihe
 
 https://radiantearth.github.io/stac-browser/#/external/paituli.csc.fi/geoserver/ogc/stac/v1/collections/sentinel_2_monthly_index_mosaics_at_fmi
 
-Each image contains the highest NDVI values per pixel. The highest NDVI value is accompanied with the date it was recorded. Demostration of time series in 2023 from Ruukki:
+Each image contains the highest NDVI values per pixel. The highest NDVI value is accompanied with the date it was recorded. Demostration of a time series from April 15 - August 1, 2023 from Ruukki:
 
 ![til](./img/animated.gif)
 
