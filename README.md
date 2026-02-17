@@ -11,7 +11,7 @@ https://radiantearth.github.io/stac-browser/#/external/paituli.csc.fi/geoserver/
 
 Check images in https://github.com/myliheik/Apu-HIKET/blob/main/notebooks/timeseries-mittalohkot.ipynb
 
-Note! In 2018-2021 the metadata has corrupted, so we don't know the date when the highest NDVI was recorded. But the date should be between the time range of 15.5.-31.7.
+Note! In 2018-2021 the metadata has corrupted date information, so we don't know the date when the highest NDVI was recorded. But the date should be between the time range of 15.5.-31.7.
 
 The results are save in Allas. See the links below.
 
