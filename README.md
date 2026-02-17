@@ -28,7 +28,7 @@ The results are save in Allas. See the links below.
 
 ### Tabular data
 
-maxNDVI for all the fields in the area of interest. About 60,000 parcels.
+maxNDVI for all the fields in the area of interest. About 60,000 parcels. File size ~3.5M.
 
 Public link: [https://a3s.fi/Apu-HIKET/maxNDVI-2018.csv](https://a3s.fi/Apu-HIKET/maxNDVI-2018.csv)
 
@@ -48,7 +48,7 @@ Public link: [https://a3s.fi/Apu-HIKET/maxNDVI-2025.csv](https://a3s.fi/Apu-HIKE
 
 ### Spatial data (parcel geometries)
 
-maxNDVI for the fields with measurement data (mittalohkot). Spatial data included.
+maxNDVI for the fields with measurement data (mittalohkot). Spatial data included. File size ~100K.
 
 
 Public link: [https://a3s.fi/Apu-HIKET/maxNDVI-fieldData-2018.gpkg](https://a3s.fi/Apu-HIKET/maxNDVI-fieldData-2018.gpkg)
