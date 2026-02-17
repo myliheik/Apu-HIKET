@@ -24,7 +24,7 @@ Check images in [timeseries-mittalohkot.ipynb](https://github.com/myliheik/Apu-H
 
 Note! In 2018-2021 the metadata has corrupted date information, so we don't know the date when the highest NDVI was recorded. But the date should be between the time range of 15.5.-31.7.
 
-The results are save in Allas. See the links below.
+The results are saved in Allas. See the links below.
 
 ### Tabular data
 
