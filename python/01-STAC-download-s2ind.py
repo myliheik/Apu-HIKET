@@ -33,7 +33,7 @@ import textwrap
 years = range(2016, 2025)
 years = range(2024, 2025)
 years = range(2018, 2023)
-years = [2023, 2025]
+years = [2018, 2020, 2021]
 years = [2019]
 
 # EDIT asset list (ndvi, ndti, ndmi, ndbi, ndsi, meta):
